@@ -1,13 +1,23 @@
+// utils/connectDB.js
 import mongoose from "mongoose";
 
+let isConnected = false; // track the connection state
+
 const connectDB = async () => {
-    try {
-        mongoose.connection.on('connected', () => console.log('Database Connected'));
-        await mongoose.connect(`${process.env.MONGODB_URI}/movietime`)
-        
-    } catch (error) {
-        console.log(error.message);
-    }
-}
+  if (isConnected) return;
+
+  try {
+    await mongoose.connect(`${process.env.MONGODB_URI}/movietime`, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    isConnected = true;
+    console.log("✅ Database Connected");
+  } catch (error) {
+    console.error("❌ MongoDB connection error:", error.message);
+    throw error;
+  }
+};
 
 export default connectDB;
