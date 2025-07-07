@@ -1,4 +1,4 @@
-// utils/connectDB.js
+
 import mongoose from "mongoose";
 
 let isConnected = false; // track the connection state
@@ -21,3 +21,4 @@ const connectDB = async () => {
 };
 
 export default connectDB;
+
