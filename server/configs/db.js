@@ -13,9 +13,9 @@ const connectDB = async () => {
     });
 
     isConnected = true;
-    console.log("✅ Database Connected");
+    console.log(" Database Connected");
   } catch (error) {
-    console.error("❌ MongoDB connection error:", error.message);
+    console.error(" MongoDB connection error:", error.message);
     throw error;
   }
 };
